@@ -2,6 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>臺東分臺節目監聽</title>
   <style>
     body {
@@ -61,7 +62,7 @@
   <div class="card">
     <h2>FM100.5 節目監聽（鯉魚山發射臺）</h2>
     <audio controls>
-      <source src="https://fm1005-relay.onrender.com" type="audio/mpeg">
+      <source src="https://fm1005-relay.onrender.com/" type="audio/mpeg">
     </audio>
   </div>
 
@@ -86,5 +87,15 @@
     </audio>
   </div>
 
+  <script>
+    document.querySelectorAll("audio").forEach(audio => {
+      audio.addEventListener("error", () => {
+        const note = document.createElement("div");
+        note.style.color = "red";
+        note.textContent = "⚠️ 音訊無法載入，可能是來源暫時離線。";
+        audio.parentElement.appendChild(note);
+      });
+    });
+  </script>
 </body>
 </html>
